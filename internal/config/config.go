@@ -6,10 +6,12 @@ import (
 	"github.com/knadh/koanf/providers/file"
 	"github.com/knadh/koanf/providers/structs"
 	"github.com/mehditeymorian/cache-compare/internal/cache/tikv"
+	"github.com/mehditeymorian/cache-compare/internal/http"
 	"log"
 )
 
 type Config struct {
+	Http http.Config `koanf:"http"`
 	Tikv tikv.Config `koanf:"tikv"`
 }
 
