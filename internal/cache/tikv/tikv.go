@@ -5,6 +5,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/tikv/client-go/v2/config"
 	"github.com/tikv/client-go/v2/rawkv"
+	pd "github.com/tikv/pd/client"
 )
 
 type Tikv struct {
@@ -13,7 +14,7 @@ type Tikv struct {
 
 // New return new client for TiKV
 func New(ctx context.Context, cfg Config) (*rawkv.Client, error) {
-	client, err := rawkv.NewClient(ctx, []string{cfg.Address}, config.DefaultConfig().Security)
+	client, err := rawkv.NewClient(ctx, []string{cfg.Address}, config.DefaultConfig().Security, pd.WithMaxErrorRetry(5))
 	if err != nil {
 		return nil, errors.Errorf("error while connecting to Tikv server: %v", err)
 	}
