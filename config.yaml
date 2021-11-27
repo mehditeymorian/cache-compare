@@ -6,3 +6,6 @@ redis:
   address: redis:6379
   password:
   db: 0
+db:
+  uri: mongodb://db:27017
+  name: cache-compare

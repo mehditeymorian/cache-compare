@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/mehditeymorian/cache-compare/internal/cache/mongodb"
 	"github.com/mehditeymorian/cache-compare/internal/cache/redis"
 	"github.com/mehditeymorian/cache-compare/internal/cache/tikv"
 	"github.com/mehditeymorian/cache-compare/internal/http"
@@ -18,6 +19,10 @@ func Default() Config {
 			Address:  "redis:6379",
 			Password: "",
 			DB:       0,
+		},
+		MongoDB: mongodb.Config{
+			Uri:  "mongodb://localhost:27017",
+			Name: "cache-compare",
 		},
 	}
 }
