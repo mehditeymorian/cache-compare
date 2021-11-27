@@ -18,8 +18,14 @@ type MongoDB struct {
 }
 
 func New(ctx context.Context, cfg Config) (*mongo.Database, error) {
+
+	credentials := options.Credential{
+		Username: cfg.Username,
+		Password: cfg.Password,
+	}
+
 	// create mongodb connection
-	client, err := mongo.NewClient(options.Client().ApplyURI(cfg.Uri))
+	client, err := mongo.NewClient(options.Client().ApplyURI(cfg.Uri).SetAuth(credentials))
 	if err != nil {
 		return nil, fmt.Errorf("db new client error: %w", err)
 	}

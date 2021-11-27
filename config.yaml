@@ -1,11 +1,13 @@
 http:
   port: 8080
 tikv:
-  address: http://tikv-pd:2379
+  address: http://basic-pd:2379
 redis:
-  address: redis:6379
+  address: redis-cluster-leader:6379
   password:
   db: 0
-db:
-  uri: mongodb://db:27017
+mongo:
+  uri: mongodb://mongodb:27017
   name: cache-compare
+  username: root
+  password: 3377lC4IYF

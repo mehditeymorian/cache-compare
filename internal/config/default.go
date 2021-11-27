@@ -21,8 +21,10 @@ func Default() Config {
 			DB:       0,
 		},
 		MongoDB: mongodb.Config{
-			Uri:  "mongodb://localhost:27017",
-			Name: "cache-compare",
+			Uri:      "mongodb://mongodb:27017",
+			Name:     "cache-compare",
+			Username: "root",
+			Password: "3377lC4IYF",
 		},
 	}
 }
