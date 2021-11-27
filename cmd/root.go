@@ -13,6 +13,7 @@ func Execute() {
 	ctx := context.Background()
 
 	cfg := config.New("config.yaml")
+	log.Printf("config %+v\n", cfg)
 
 	tikvClient, err := tikv.New(ctx, cfg.Tikv)
 	if err != nil {
