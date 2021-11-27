@@ -2,3 +2,7 @@ http:
   port: 8080
 tikv:
   address: http://tikv-pd:2379
+redis:
+  address: redis:6379
+  password:
+  db: 0

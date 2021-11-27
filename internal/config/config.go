@@ -5,14 +5,16 @@ import (
 	"github.com/knadh/koanf/parsers/yaml"
 	"github.com/knadh/koanf/providers/file"
 	"github.com/knadh/koanf/providers/structs"
+	"github.com/mehditeymorian/cache-compare/internal/cache/redis"
 	"github.com/mehditeymorian/cache-compare/internal/cache/tikv"
 	"github.com/mehditeymorian/cache-compare/internal/http"
 	"log"
 )
 
 type Config struct {
-	Http http.Config `koanf:"http"`
-	Tikv tikv.Config `koanf:"tikv"`
+	Http  http.Config  `koanf:"http"`
+	Tikv  tikv.Config  `koanf:"tikv"`
+	Redis redis.Config `koanf:"redis"`
 }
 
 func New(filename string) Config {
