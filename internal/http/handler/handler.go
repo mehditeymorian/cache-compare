@@ -7,15 +7,15 @@ import (
 	"net/http"
 )
 
-type Tikv struct {
+type CacheHandler struct {
 	Client cache.Cache
 }
 
-func (t Tikv) set(ctx echo.Context) error {
+func (c CacheHandler) set(ctx echo.Context) error {
 	key := ctx.QueryParam("key")
 	value := ctx.QueryParam("val")
 
-	err := t.Client.Set(ctx.Request().Context(), key, value)
+	err := c.Client.Set(ctx.Request().Context(), key, value)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
@@ -23,10 +23,10 @@ func (t Tikv) set(ctx echo.Context) error {
 	return ctx.NoContent(http.StatusNoContent)
 }
 
-func (t Tikv) get(ctx echo.Context) error {
+func (c CacheHandler) get(ctx echo.Context) error {
 	key := ctx.Param("key")
 
-	get, err := t.Client.Get(ctx.Request().Context(), key)
+	get, err := c.Client.Get(ctx.Request().Context(), key)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
@@ -36,10 +36,10 @@ func (t Tikv) get(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, valueResponse)
 }
 
-func (t Tikv) del(ctx echo.Context) error {
+func (c CacheHandler) del(ctx echo.Context) error {
 	key := ctx.Param("key")
 
-	err := t.Client.Del(ctx.Request().Context(), key)
+	err := c.Client.Del(ctx.Request().Context(), key)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 	}
@@ -47,8 +47,8 @@ func (t Tikv) del(ctx echo.Context) error {
 	return ctx.NoContent(http.StatusNoContent)
 }
 
-func (t Tikv) Register(app *echo.Echo) {
-	app.GET("/tikv/:key", t.get)
-	app.POST("/tikv", t.set)
-	app.DELETE("/tikv/:key", t.del)
+func (c CacheHandler) Register(prefix string, app *echo.Echo) {
+	app.GET(prefix+"/:key", c.get)
+	app.POST(prefix, c.set)
+	app.DELETE(prefix+"/:key", c.del)
 }

@@ -3,6 +3,7 @@ package cmd
 import (
 	"context"
 	"github.com/labstack/echo/v4"
+	"github.com/mehditeymorian/cache-compare/internal/cache/redis"
 	"github.com/mehditeymorian/cache-compare/internal/cache/tikv"
 	"github.com/mehditeymorian/cache-compare/internal/config"
 	"github.com/mehditeymorian/cache-compare/internal/http/handler"
@@ -21,9 +22,16 @@ func Execute() {
 	}
 	tikvCache := tikv.Tikv{Client: tikvClient}
 
+	redisClient, err := redis.New(ctx, cfg.Redis)
+	if err != nil {
+		log.Printf("error initializing redis client: %v", err)
+	}
+	redisCache := redis.Redis{Client: redisClient}
+
 	app := echo.New()
 
-	handler.Tikv{Client: tikvCache}.Register(app)
+	handler.CacheHandler{Client: tikvCache}.Register("/tikv", app)
+	handler.CacheHandler{Client: redisCache}.Register("/redis", app)
 
 	if err := app.Start(":" + cfg.Http.Port); err != nil {
 		log.Fatalf("failed to start HTTP server! %v", err)
