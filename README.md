@@ -10,4 +10,4 @@ Load test is done by sending 10k request with 2 different concurrency rate. Conn
 ![load test c100](https://github.com/mehditeymorian/cache-compare/blob/master/results/c100.png)
               
 ### Result of Load Test with concurrency rate of 1000
-![load test c1000](https://github.com/mehditeymorian/cache-compare/blob/master/results/c100.png)
+![load test c1000](https://github.com/mehditeymorian/cache-compare/blob/master/results/c1000.png)
