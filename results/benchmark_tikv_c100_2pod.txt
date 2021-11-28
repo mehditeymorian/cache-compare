@@ -1,0 +1,84 @@
+/app $ ab -n 10000 -c 1000 -m POST 'http://ADDRESS:2379/id?key=dgfh&val=123'
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking basic-pd (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        ADDRESS
+Server Port:            2379
+
+Document Path:          /id?key=dgfh&val=123
+Document Length:        19 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   11.499 seconds
+Complete requests:      10000
+/app $ ab -n 10000 -c 100 -m POST 'http://basic-pd:2379/id?key=dgfh&val=123'
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking basic-pd (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        basic-pd
+Server Port:            2379
+
+Document Path:          /id?key=dgfh&val=123
+Document Length:        19 bytes
+
+Concurrency Level:      100
+Time taken for tests:   10.087 seconds
+Complete requests:      10000
+Failed requests:        0
+Non-2xx responses:      10000
+Total transferred:      3380000 bytes
+HTML transferred:       190000 bytes
+Requests per second:    991.41 [#/sec] (mean)
+Time per request:       100.867 [ms] (mean)
+Time per request:       1.009 [ms] (mean, across all concurrent requests)
+Transfer rate:          327.24 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1   44  43.6      8     200
+Processing:     2   56  44.8     91     208
+Waiting:        1   41  43.3      7     204
+Total:          4  100  34.7    100     301
+
+Percentage of the requests served within a certain time (ms)
+  50%    100
+  66%    101
+  75%    101
+  80%    102
+  90%    105
+  95%    189
+  98%    192
+  99%    195
+ 100%    301 (longest request)

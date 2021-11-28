@@ -1,0 +1,56 @@
+/app $ ab -n 10000 -c 1000 -m POST 'ADDRESS:8080/redis?key=asd&val=test'
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking cache-compare (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        ADDRESS
+Server Port:            8080
+
+Document Path:          /redis?key=asd&val=test
+Document Length:        0 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   15.010 seconds
+Complete requests:      10000
+Failed requests:        6795
+   (Connect: 0, Receive: 0, Length: 6795, Exceptions: 0)
+Non-2xx responses:      6795
+Total transferred:      1468990 bytes
+HTML transferred:       298980 bytes
+Requests per second:    666.21 [#/sec] (mean)
+Time per request:       1501.030 [ms] (mean)
+Time per request:       1.501 [ms] (mean, across all concurrent requests)
+Transfer rate:          95.57 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1   46  84.5      5     486
+Processing:    97 1371 314.7   1392    2798
+Waiting:        9 1332 330.1   1313    2794
+Total:        303 1417 293.8   1399    2800
+
+Percentage of the requests served within a certain time (ms)
+  50%   1399
+  66%   1499
+  75%   1583
+  80%   1601
+  90%   1786
+  95%   1907
+  98%   2116
+  99%   2298
+ 100%   2800 (longest request)

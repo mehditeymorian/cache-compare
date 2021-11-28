@@ -1,0 +1,55 @@
+/app $ ab -n 10000 -c 1000 -m POST 'http://ADDRESS:2379/id?key=dgfh&val=123'
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking basic-pd (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        ADDRESS
+Server Port:            2379
+
+Document Path:          /id?key=dgfh&val=123
+Document Length:        19 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   11.303 seconds
+Complete requests:      10000
+Failed requests:        0
+Non-2xx responses:      10000
+Total transferred:      3380000 bytes
+HTML transferred:       190000 bytes
+Requests per second:    884.74 [#/sec] (mean)
+Time per request:       1130.269 [ms] (mean)
+Time per request:       1.130 [ms] (mean, across all concurrent requests)
+Transfer rate:          292.03 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        3  500 101.4    501     713
+Processing:   199  563 143.1    593    1196
+Waiting:        2  404 139.6    400    1107
+Total:        606 1063 129.2   1096    1900
+
+Percentage of the requests served within a certain time (ms)
+  50%   1096
+  66%   1102
+  75%   1105
+  80%   1188
+  90%   1197
+  95%   1207
+  98%   1305
+  99%   1398
+ 100%   1900 (longest request)

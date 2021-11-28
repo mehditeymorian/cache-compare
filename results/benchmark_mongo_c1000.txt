@@ -1,0 +1,54 @@
+/app $ ab -n 10000 -c 1000 -m POST 'ADDRESS:8080/mongo?key=asd&val=test'
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking cache-compare (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        ADDRESS
+Server Port:            8080
+
+Document Path:          /mongo?key=asd&val=test
+Document Length:        0 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   15.389 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      640000 bytes
+HTML transferred:       0 bytes
+Requests per second:    649.79 [#/sec] (mean)
+Time per request:       1538.948 [ms] (mean)
+Time per request:       1.539 [ms] (mean, across all concurrent requests)
+Transfer rate:          40.61 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1   55 113.7      4     588
+Processing:   296 1391 334.2   1397    2893
+Waiting:        2 1379 334.6   1394    2893
+Total:        297 1446 382.0   1401    3396
+
+Percentage of the requests served within a certain time (ms)
+  50%   1401
+  66%   1503
+  75%   1597
+  80%   1608
+  90%   1804
+  95%   2196
+  98%   2690
+  99%   2907
+ 100%   3396 (longest request)
