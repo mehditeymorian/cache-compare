@@ -13,18 +13,18 @@ func Default() Config {
 			Port: "8080",
 		},
 		Tikv: tikv.Config{
-			Address: "http://tikv-pd:2379",
+			Address: "http://ADDRESS:2379",
 		},
 		Redis: redis.Config{
-			Address:  "redis:6379",
+			Address:  "ADDRESS:6379",
 			Password: "",
 			DB:       0,
 		},
 		MongoDB: mongodb.Config{
-			Uri:      "mongodb://mongodb:27017",
+			Uri:      "mongodb://ADDRESS:27017",
 			Name:     "cache-compare",
-			Username: "root",
-			Password: "3377lC4IYF",
+			Username: "USERNAME",
+			Password: "PASSWORD",
 		},
 	}
 }
