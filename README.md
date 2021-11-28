@@ -1,6 +1,6 @@
-# cache-compare
+# Cache Databases Comparison
 This is an application that can perform set, get, and delete key-value operation for 3 different cache database including Redis, MongoDB, and TiKV.
-The end goal is to compare these databases to see how they perform under load.
+The end goal is to compare these databases to see how they perform against large number of requests.
 Load test is done using [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) from within the cluster using [ab-test](https://github.com/mehditeymorian/ab-test).
 
 # Result of Load Testing
